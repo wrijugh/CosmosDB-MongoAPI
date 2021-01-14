@@ -1,7 +1,7 @@
 import pymongo 
 import random
 
-myclient = pymongo.MongoClient("mongodb://cosmosfreewg:6gUvMGLaGRvkgysbC6XnFZlBbvnqQxguWBlTDtZZcXtlkawL96Q0njCNGzDcwU1wW9L1QAdwszKzUVLxc9AT5g==@cosmosfreewg.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@cosmosfreewg@")
+myclient = pymongo.MongoClient("")
 
 mydb = myclient["hrdb"]
 mycol = mydb["employee"]
