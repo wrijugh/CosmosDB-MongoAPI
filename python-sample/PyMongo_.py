@@ -2,7 +2,8 @@ import pymongo
 import random
 import cosmosmongo
 
-myclient = pymongo.MongoClient(cosmosmongo.mongoUrl)
+# myclient = pymongo.MongoClient(cosmosmongo.mongoUrl)
+myclient = pymongo.MongoClient(cosmosmongo.mongoAtlasUrl)
 
 mydb = myclient["hrdb"]
 mycol = mydb["employee"]
@@ -25,7 +26,7 @@ def insertRecord(_mycol):
     # Insert an array of documents - many
     mycol.insert_many(newEmps)
 
-#insertRecord(mycol)
+insertRecord(mycol)
 
 def insertChildrenArray():
     employeeWithChildren = {
@@ -38,7 +39,7 @@ def insertChildrenArray():
         ]}
     mycol.insert_one(employeeWithChildren)
 
-insertChildrenArray()
+#insertChildrenArray()
 
 #count 
 count = mycol.count_documents({})
@@ -47,17 +48,18 @@ print(count)#
 def deleteAllRecords():
     mycol.delete_many({})
 # deleteAllRecords()
+
 #Show all documents one by one
 for emp in mycol.find():    
     print(emp)
 
 # Filter 
-def findSome():
-    mycol.aggregate([
-        {
-            $addFields: {
-                numChildren:{$size:"$children"}
-            }
-        }
-    ])
+# def findSome():
+#     mycol.aggregate([
+#         {
+#             $addFields: {
+#                 numChildren:{$size:"$children"}
+#             }
+#         }
+#     ])
 
